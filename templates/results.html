@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Battle Prompt</title>
 </head>
+
 <body>
-    <h2>Your Generated Anime Battle Prompt</h2>
+    <h2>Anime Battle Prompt</h2>
     <p>{{ prompt }}</p>
-    <a href="/">Back</a>
+
+    {% if image_url %}
+    <h3>Generated Image</h3>
+    <img src="{{ image_url }}" alt="Anime battle image" style="max-width: 100%;">
+    {% endif %}
+
+    <br>
+    <a href="/">Generate Another</a>
+
 </body>
+
 </html>

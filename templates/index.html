@@ -1,43 +1,32 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Anime Battle Generator</title>
 </head>
-
 <body>
     <h2>Enter your characters</h2>
     <form action="/results" method="post">
         <h3>You</h3>
-        <input type="text" name="your_name" placeholder="Your name" required>
-        <select name="your_hair">
-            <option value="short black spiky hair">Short Black Spiky Hair</option>
-            <option value="long red hair">Long Red Hair</option>
-            <option value="white messy hair">White Messy Hair</option>
-        </select>
-        <select name="your_vibe">
-            <option value="glowing eyes">Glowing Eyes</option>
-            <option value="fire aura">Fire Aura</option>
-            <option value="cybernetic arms">Cybernetic Arms</option>
-        </select>
+        <label for="your_name">Your Name:</label><br>
+        <input type="text" name="your_name" placeholder="Your name" required><br><br>
+
+        <label for="your_traits">Your Traits:</label><br>
+        <input type="text" name="your_traits" placeholder="e.g. white spiky hair, glowing red eyes, fire aura" required><br>
+        <p style="font-size: small; color: gray;">
+            Suggestions: "white messy hair, glowing red eyes", "robotic limbs, lightning tattoos", "dragon wings, flame aura"
+        </p><br>
 
         <h3>Your Friend</h3>
-        <input type="text" name="friend_name" placeholder="Friend's name" required>
-        <select name="friend_hair">
-            <option value="green ponytail">Green Ponytail</option>
-            <option value="blue twin braids">Blue Twin Braids</option>
-            <option value="bald with tattoos">Bald with Tattoos</option>
-        </select>
-        <select name="friend_vibe">
-            <option value="demon eyes">Demon Eyes</option>
-            <option value="electric sparks">Electric Sparks</option>
-            <option value="ice armor">Ice Armor</option>
-        </select>
+        <label for="friend_name">Friend's Name:</label><br>
+        <input type="text" name="friend_name" placeholder="Friend's name" required><br><br>
 
+        <label for="friend_traits">Friend's Traits:</label><br>
+        <input type="text" name="friend_traits" placeholder="e.g. green ponytail, demon eyes, ice armor" required><br>
+        <p style="font-size: small; color: gray;">
+            Suggestions: "green ponytail, demon eyes", "cybernetic eye, blue flames", "ice armor, neon wings"
+        </p><br>
 
-        <br><br>
         <input type="submit" value="Generate Battle Prompt">
     </form>
 </body>
-
 </html>
