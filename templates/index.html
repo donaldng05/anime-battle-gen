@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anime Battle Generator</title>
+</head>
+<body>
+    <h2>Enter your characters</h2>
+    <form action="/results" method="post">
+        <h3>You</h3>
+        <input type="text" name="your_name" placeholder="Your name" required>
+        <input type="text" name="your_traits" placeholder="Your traits (e.g., white hair, glowing eyes)" required>
+
+        <h3>Your Friend</h3>
+        <input type="text" name="friend_name" placeholder="Friend's name" required>
+        <input type="text" name="friend_traits" placeholder="Friend's traits" required>
+
+        <br><br>
+        <input type="submit" value="Generate Battle Prompt">
+    </form>
+</body>
+</html>
