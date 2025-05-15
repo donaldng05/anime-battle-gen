@@ -9,6 +9,10 @@
     <h2>Anime Battle Prompt</h2>
     <p>{{ prompt }}</p>
 
+    {% if error %}
+    <p style="color: red; font-weight: bold;">{{ error }}</p>
+    {% endif %}
+
     {% if image_url %}
     <h3>Generated Image</h3>
     <img src="{{ image_url }}" alt="Anime battle image" style="max-width: 100%;">
@@ -16,6 +20,10 @@
 
     <br>
     <a href="/">Generate Another</a>
+    {% if error %}
+    <button onclick="window.location.href='/'">Retry</button>
+    {% endif %}
+
 
 </body>
 

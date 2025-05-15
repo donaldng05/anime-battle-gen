@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Anime Battle Generator</title>
 </head>
+
 <body>
     <h2>Enter your characters</h2>
     <form action="/results" method="post">
@@ -11,9 +13,11 @@
         <input type="text" name="your_name" placeholder="Your name" required><br><br>
 
         <label for="your_traits">Your Traits:</label><br>
-        <input type="text" name="your_traits" placeholder="e.g. white spiky hair, glowing red eyes, fire aura" required><br>
+        <input type="text" name="your_traits" placeholder="e.g. white spiky hair, glowing red eyes, fire aura"
+            required><br>
         <p style="font-size: small; color: gray;">
-            Suggestions: "white messy hair, glowing red eyes", "robotic limbs, lightning tattoos", "dragon wings, flame aura"
+            Suggestions: "white messy hair, glowing red eyes", "robotic limbs, lightning tattoos", "dragon wings, flame
+            aura"
         </p><br>
 
         <h3>Your Friend</h3>
@@ -28,5 +32,19 @@
 
         <input type="submit" value="Generate Battle Prompt">
     </form>
+    <!-- Spinner -->
+    <div id="spinner" style="display: none; text-align: center; margin-top: 20px;">
+        <p>Generating your anime battle... please wait!</p>
+        <img src="https://i.imgur.com/llF5iyg.gif" alt="Loading..." width="80">
+    </div>
+
+    <script>
+        // When form is submitted, show spinner
+        document.querySelector("form").addEventListener("submit", function () {
+            document.getElementById("spinner").style.display = "block";
+        });
+    </script>
+
 </body>
+
 </html>

@@ -17,22 +17,25 @@ def results():
     friend_name = request.form['friend_name']
     friend_traits = request.form['friend_traits']
 
-    # Build prompt from input
+    # Build prompt
     prompt = build_battle_prompt(your_name, your_traits, friend_name, friend_traits)
 
-    # Generate image from Hugging Face
+    # Call Hugging Face API
     image_data = generate_image(prompt)
 
-    # Save image to static folder
-    filename = f"{uuid.uuid4().hex}.png"
-    filepath = os.path.join("static", "images", filename)
-    with open(filepath, "wb") as f:
-        f.write(image_data)
+    if image_data:
+        # Save image
+        filename = f"{uuid.uuid4().hex}.png"
+        filepath = os.path.join("static", "images", filename)
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+        with open(filepath, "wb") as f:
+            f.write(image_data)
 
-    # Pass image path to template
-    image_url = f"/static/images/{filename}"
-
-    return render_template("results.html", prompt=prompt, image_url=image_url)
+        image_url = f"/static/images/{filename}"
+        return render_template("results.html", prompt=prompt, image_url=image_url)
+    else:
+        # API failed — show error to user
+        return render_template("results.html", prompt=prompt, image_url=None, error="Failed to generate image. Please try again.")
 
 if __name__ == '__main__':
     app.run(port=3000, host='0.0.0.0', debug=True)
