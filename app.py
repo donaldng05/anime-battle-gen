@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from helpers.prompt_builder import build_battle_prompt
-from helpers.hf_api import generate_image
+from helpers.local_infer import generate_image
 import uuid
 import os
 
