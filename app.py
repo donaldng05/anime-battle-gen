@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from helpers.prompt_builder import build_battle_prompt
 
 app = Flask(__name__)
 
@@ -13,7 +14,7 @@ def results():
     friend_name = request.form['friend_name']
     friend_traits = request.form['friend_traits']
 
-    prompt = f"An anime-style battle scene between {your_name}, who has {your_traits}, and {friend_name}, who has {friend_traits}. Glowing energy, destroyed city background, intense action, cinematic lighting."
+    prompt = build_battle_prompt(your_name, your_traits, friend_name, friend_traits)
 
     return render_template('results.html', prompt=prompt)
 
