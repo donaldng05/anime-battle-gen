@@ -10,9 +10,9 @@ def index():
 @app.route('/results', methods=['POST'])
 def results():
     your_name = request.form['your_name']
-    your_traits = request.form['your_traits']
+    your_traits = f"{request.form['your_hair']}, {request.form['your_vibe']}"
     friend_name = request.form['friend_name']
-    friend_traits = request.form['friend_traits']
+    friend_traits = f"{request.form['friend_hair']}, {request.form['friend_vibe']}"
 
     prompt = build_battle_prompt(your_name, your_traits, friend_name, friend_traits)
 

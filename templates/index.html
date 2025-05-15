@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Anime Battle Generator</title>
 </head>
+
 <body>
     <h2>Enter your characters</h2>
     <form action="/results" method="post">
         <h3>You</h3>
         <input type="text" name="your_name" placeholder="Your name" required>
-        <input type="text" name="your_traits" placeholder="Your traits (e.g., white hair, glowing eyes)" required>
+        <select name="your_hair">
+            <option value="short black spiky hair">Short Black Spiky Hair</option>
+            <option value="long red hair">Long Red Hair</option>
+            <option value="white messy hair">White Messy Hair</option>
+        </select>
+        <select name="your_vibe">
+            <option value="glowing eyes">Glowing Eyes</option>
+            <option value="fire aura">Fire Aura</option>
+            <option value="cybernetic arms">Cybernetic Arms</option>
+        </select>
 
         <h3>Your Friend</h3>
         <input type="text" name="friend_name" placeholder="Friend's name" required>
-        <input type="text" name="friend_traits" placeholder="Friend's traits" required>
+        <select name="friend_hair">
+            <option value="green ponytail">Green Ponytail</option>
+            <option value="blue twin braids">Blue Twin Braids</option>
+            <option value="bald with tattoos">Bald with Tattoos</option>
+        </select>
+        <select name="friend_vibe">
+            <option value="demon eyes">Demon Eyes</option>
+            <option value="electric sparks">Electric Sparks</option>
+            <option value="ice armor">Ice Armor</option>
+        </select>
+
 
         <br><br>
         <input type="submit" value="Generate Battle Prompt">
     </form>
 </body>
+
 </html>
