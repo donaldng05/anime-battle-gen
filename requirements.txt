@@ -1,8 +1,22 @@
+# Web & core
 flask==2.3.2
 requests
 python-dotenv
+
+# Diffusion & model
 diffusers
 transformers
 torch
 safetensors
 accelerate
+
+# Image I/O
+Pillow
+
+# Metrics & benchmarking
+torchvision
+torchmetrics[image]
+torch-fidelity
+lpips
+tqdm
+pandas

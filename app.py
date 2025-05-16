@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 from helpers.prompt_builder import build_battle_prompt
-from helpers.local_infer import generate_image
-import uuid
+from helpers.local_infer import generate_and_save_image
 import os
 
 app = Flask(__name__)
@@ -17,25 +16,24 @@ def results():
     friend_name = request.form['friend_name']
     friend_traits = request.form['friend_traits']
 
-    # Build prompt
+    # Build the battle prompt
     prompt = build_battle_prompt(your_name, your_traits, friend_name, friend_traits)
 
-    # Call Hugging Face API
-    image_data = generate_image(prompt)
+    try:
+        # Generate & save the image locally
+        output_path = generate_and_save_image(prompt, steps=25)
+        # Derive the URL for the client
+        filename = os.path.basename(output_path)
+        image_url = url_for('static', filename=f'images/{filename}')
+        return render_template('results.html', prompt=prompt, image_url=image_url)
 
-    if image_data:
-        # Save image
-        filename = f"{uuid.uuid4().hex}.png"
-        filepath = os.path.join("static", "images", filename)
-        os.makedirs(os.path.dirname(filepath), exist_ok=True)
-        with open(filepath, "wb") as f:
-            f.write(image_data)
-
-        image_url = f"/static/images/{filename}"
-        return render_template("results.html", prompt=prompt, image_url=image_url)
-    else:
-        # API failed — show error to user
-        return render_template("results.html", prompt=prompt, image_url=None, error="Failed to generate image. Please try again.")
+    except Exception as e:
+        # Generation failed — show error to user
+        error_msg = f"Failed to generate image: {str(e)}"
+        return render_template('results.html',
+                               prompt=prompt,
+                               image_url=None,
+                               error=error_msg)
 
 if __name__ == '__main__':
     app.run(port=3000, host='0.0.0.0', debug=True)
