@@ -9,6 +9,7 @@ transformers
 torch
 safetensors
 accelerate
+peft
 
 # Image I/O
 Pillow

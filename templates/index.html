@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Anime Battle Generator</title>
+    <style>
+      /* center spinner */
+      #spinner {
+        display: none;
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
 </head>
-
 <body>
     <h2>Enter your characters</h2>
     <form action="/results" method="post">
@@ -13,11 +19,11 @@
         <input type="text" name="your_name" placeholder="Your name" required><br><br>
 
         <label for="your_traits">Your Traits:</label><br>
-        <input type="text" name="your_traits" placeholder="e.g. white spiky hair, glowing red eyes, fire aura"
-            required><br>
+        <input type="text" name="your_traits"
+               placeholder="e.g. white spiky hair, glowing red eyes, fire aura"
+               required><br>
         <p style="font-size: small; color: gray;">
-            Suggestions: "white messy hair, glowing red eyes", "robotic limbs, lightning tattoos", "dragon wings, flame
-            aura"
+            Suggestions: "white messy hair, glowing red eyes", "robotic limbs, lightning tattoos", "dragon wings, flame aura"
         </p><br>
 
         <h3>Your Friend</h3>
@@ -25,15 +31,37 @@
         <input type="text" name="friend_name" placeholder="Friend's name" required><br><br>
 
         <label for="friend_traits">Friend's Traits:</label><br>
-        <input type="text" name="friend_traits" placeholder="e.g. green ponytail, demon eyes, ice armor" required><br>
+        <input type="text" name="friend_traits"
+               placeholder="e.g. green ponytail, demon eyes, ice armor"
+               required><br>
         <p style="font-size: small; color: gray;">
             Suggestions: "green ponytail, demon eyes", "cybernetic eye, blue flames", "ice armor, neon wings"
         </p><br>
 
+        <h3>Background / Effects (optional)</h3>
+        <label for="background_effects">Background / Effects:</label><br>
+        <input type="text" name="background_effects"
+               placeholder="e.g. destroyed cityscape, dust clouds, motion blur"><br>
+        <p style="font-size: small; color: gray;">
+            Suggestions: "destroyed cityscape, dust and debris flying", 
+                         "speed lines, motion blur", 
+                         "cinematic lighting, energy aura"
+        </p><br>
+
+        <h3>Anime Style</h3>
+        <label for="anime_style">Choose a style:</label><br>
+        <select name="anime_style" id="anime_style">
+            <option value="">Default Waifu Diffusion</option>
+            <option value="One Piece">One Piece</option>
+            <option value="Jujutsu Kaisen">Jujutsu Kaisen</option>
+            <option value="Naruto">Naruto</option>
+        </select><br><br>
+
         <input type="submit" value="Generate Battle Prompt">
     </form>
+
     <!-- Spinner -->
-    <div id="spinner" style="display: none; text-align: center; margin-top: 20px;">
+    <div id="spinner">
         <p>Generating your anime battle... please wait!</p>
         <img src="https://i.imgur.com/llF5iyg.gif" alt="Loading..." width="80">
     </div>
@@ -44,7 +72,5 @@
             document.getElementById("spinner").style.display = "block";
         });
     </script>
-
 </body>
-
 </html>
